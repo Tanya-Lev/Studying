@@ -1,7 +1,6 @@
 package org.example.registrationLogin.useCase;
 
 import org.example.oshibki.Hash256Util;
-
 import org.example.registrationLogin.entity.User;
 import org.example.registrationLogin.exception.IncorrectLoginException;
 import org.example.registrationLogin.exception.IncorrectPasswordException;
@@ -11,13 +10,14 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class LoginUseCase {
+public class AdminLoginUseCase {
     public static void login() {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             String inputLogin;
             String inputPassword;
+            String inputRole;//роль будет подтягиваться???????
             try {
                 System.out.println("Enter Login:");
                 inputLogin = scanner.nextLine();
@@ -44,4 +44,3 @@ public class LoginUseCase {
         }
     }
 }
-

@@ -28,8 +28,7 @@ public class Utils {
 
     static public List<User> jsonDeserialization() {
         Gson gson = new GsonBuilder().create();
-        Type listType = new TypeToken<List<User>>() {
-        }.getType(); // Объявляем корректный тип
+        Type listType = new TypeToken<List<User>>() {}.getType(); // Объявляем корректный тип
 
         try (FileReader reader = new FileReader("user.json")) {
             return gson.fromJson(reader, listType); // Используем `listType`

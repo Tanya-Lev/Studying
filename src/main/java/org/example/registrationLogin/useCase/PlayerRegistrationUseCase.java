@@ -1,35 +1,36 @@
 package org.example.registrationLogin.useCase;
 
 import org.example.oshibki.Hash256Util;
+import org.example.registrationLogin.entity.Player;
 import org.example.registrationLogin.entity.User;
 import org.example.registrationLogin.utils.Utils;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class RegistrationUseCase {
-    public static User registration() {
+public class PlayerRegistrationUseCase {
+    public static User registration() {//??????????
         Scanner scanner = new Scanner(System.in);
-        User user = new User();
+        Player player = new Player();
         String truePassword = "";
 
         try {
             do {
                 System.out.println("Enter Login:");
-            } while (!user.setLogin(scanner.nextLine()));
+            } while (!player.setLogin(scanner.nextLine()));
             do {
                 System.out.println("Enter Password:");
                 truePassword = scanner.nextLine();
             } while (truePassword.length() > 8);
             do {
                 System.out.println("Enter Email:");
-            } while (!user.setEmail(scanner.nextLine()));
+            } while (!player.setEmail(scanner.nextLine()));
             do {
                 System.out.println("Enter Phone:");
-            } while (!user.setPhone(scanner.nextLine()));
+            } while (!player.setPhone(scanner.nextLine()));
             do {
                 System.out.println("Enter Age:");
-            } while (!user.setAge(scanner.nextInt()));
+            } while (!player.setAge(scanner.nextInt()));
 
         } catch (NoSuchElementException _) {
             System.out.println("NoSuchElementException");
@@ -39,16 +40,16 @@ public class RegistrationUseCase {
             throw new RuntimeException(e);
         }
 
-        user.setPassword(Hash256Util.hash(truePassword));
+        player.setPassword(Hash256Util.hash(truePassword));
 
-        System.out.println(user.getLogin());
-        System.out.println(user.getPassword());
-        System.out.println(user.getEmail());
-        System.out.println(user.getPhone());
-        System.out.println(user.getAge());
+        System.out.println(player.getLogin());
+        System.out.println(player.getPassword());
+        System.out.println(player.getEmail());
+        System.out.println(player.getPhone());
+        System.out.println(player.getAge());
 
-        Utils.jsonSerialization(user);
+        Utils.jsonSerialization(player);
 
-        return user;
+        return player;
     }
 }
